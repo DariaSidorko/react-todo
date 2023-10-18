@@ -1,4 +1,5 @@
 import React from 'react';
+import TodoListItem from './TodoListItem';
 
 const todoList = [];
 todoList.push({id: 1, title: "First task"});
@@ -11,8 +12,7 @@ function TodoList() {
     todoList.map((item) =>{
         return (
           <ul>
-            <li style={{ textAlign: 'left' }}> {item.id} </li>
-            <li style={{ textAlign: 'left' }}> {item.title} </li>
+            <TodoListItem list={item}/>
           </ul>
         )
         }) 
