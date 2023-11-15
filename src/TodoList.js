@@ -1,15 +1,13 @@
 import React from 'react';
 import TodoListItem from './TodoListItem';
 
-const todoList = [];
-todoList.push({id: 1, title: "First task"});
-todoList.push({id: 2, title: "Second task"});
-todoList.push({id: 3, title: "Third task"});
 
 
-function TodoList() {
+function TodoList(props) {
+
+
   return ( 
-    todoList.map((item) =>{
+    props.TodoList.map((item) =>{
         return (
           <ul>
             <TodoListItem list={item}/>
