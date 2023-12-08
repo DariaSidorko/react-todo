@@ -16,7 +16,7 @@ function AddTodoForm (props) {
   const handleAddTodo = (e) => {
     e.preventDefault();
     props.onAddTodo([{title:todoTitle, id:Date.now()}]);
-    document.getElementById("todoTitle").title = "";
+    document.getElementById("todoTitle").title = " ";
   } 
 
   return (
