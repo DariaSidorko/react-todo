@@ -6,7 +6,7 @@ import InputWithLabel from './InputWithLabel';
 
 function AddTodoForm ({onAddTodo}) {
 
-  const [todoTitle, setTodoTitle] = useState();
+  const [todoTitle, setTodoTitle] = useState('');
 
   const handleTitleChange = (e) => {
     e.preventDefault();
@@ -23,7 +23,7 @@ function AddTodoForm ({onAddTodo}) {
 
   return (
     <form onSubmit={handleAddTodo}>
-      <InputWithLabel  id={"todoTitle"} title={"title"} todoTitle={todoTitle} handleTitleChange = {handleTitleChange} Title={"Title: "}/>
+      <InputWithLabel  id={"todoTitle"} title={"title"} value={todoTitle} handleChange = {handleTitleChange}> Title: </InputWithLabel>
       <button type='submit' > add</button>
     </form>
   )

@@ -2,30 +2,38 @@ import React from 'react';
 import TodoList from './TodoList';
 import AddTodoForm from './AddTodoForm';
 
-import {useState} from 'react';
 
+const useSemiPersistentState = () => {
+  const [todoList, setTodoList] = React.useState(JSON.parse(localStorage.getItem("savedTodoList")) || []);
+  return [todoList, setTodoList]
+}
 
 function App() {
 
-  const useSemiPersistentState = () => {
-    const [todoList, setTodoList] = React.useState(JSON.parse(localStorage.getItem("savedTodoList")) || []);
-    return [todoList, setTodoList]
-  }
-
  const [todoList, setTodoList] = useSemiPersistentState();
 
+//  const [todoList, setTodoList] = React.useState(JSON.parse(localStorage.getItem("savedTodoList")) || []);
+
+//  React.useEffect((resolve, reject) => {
+//   setTimeout(function () {
+//     resolve(data={})
+//   }, 2000)
+// });
  
+
   const addTodo = (newTodo) => {
-    // setTodoList((newTodo) => [...todoList, ...newTodo]);
+    // setTodoList((prevTodo) => [...prevTodo, ...newTodo]);
     setTodoList([...todoList, ...newTodo])
-    console.log(todoList)
-    localStorage.setItem("savedTodoList", JSON.stringify([...todoList, ...newTodo]));
   }
 
   const removeTodo = (id) => {
     setTodoList(todoList.filter((list) => list.id !== id))
-    localStorage.setItem("savedTodoList", JSON.stringify(todoList.filter((list) => list.id !== id)));
   }
+
+  React.useEffect(() => {
+    localStorage.setItem("savedTodoList", JSON.stringify(todoList));
+  }, [todoList]);
+
 
   return (
     <div style={{ textAlign: 'center' }}>

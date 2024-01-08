@@ -2,7 +2,7 @@ import React from 'react';
 // import {useRef} from 'react';
 
 
-function InputWithLabel({id, title, todoTitle, handleTitleChange, Title}) {
+function InputWithLabel({id, title, value, handleChange, children}) {
 
     const inputRef = React.useRef(null);
 
@@ -12,8 +12,8 @@ function InputWithLabel({id, title, todoTitle, handleTitleChange, Title}) {
 
   return ( 
             <React.Fragment>
-                <label htmlFor={id} >{Title}</label>
-                <input id={id} name={title} value={todoTitle} onChange={handleTitleChange} ref ={inputRef} ></input>
+                <label htmlFor={id} >{children}</label>
+                <input id={id} name={title} value={value} onChange={handleChange} ref ={inputRef} ></input>
             </React.Fragment>
         )
   } 
