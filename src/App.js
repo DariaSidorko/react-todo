@@ -1,6 +1,8 @@
 import React from 'react';
 import TodoList from './TodoList';
 import AddTodoForm from './AddTodoForm';
+import "./TodoListItem.module.css"
+import styles from "./TodoListItem.module.css" 
 
 
 // const useSemiPersistentState = () => {
@@ -16,6 +18,13 @@ function App() {
 
  const [isLoading, setIsLoading] =  React.useState(true);
 
+ const weekdays = ["Sunday","Monday","Tuesday","Wednesday","Thursday","Friday","Saturday"];
+ const months = ["January","February","March","April","May","June","July","August","September","October","November","December"];
+
+ const d = new Date();
+ const date = d.getDate(); 
+ const weekday = weekdays[d.getDay()];
+ const month = months[d.getMonth()];
 
   const addTodo = (newTodo) => {
     // setTodoList((prevTodo) => [...prevTodo, ...newTodo]);
@@ -47,10 +56,12 @@ function App() {
    
 
   return (
-    <div style={{ textAlign: 'center' }}>
-      <h1>Todo List</h1>
-      <AddTodoForm  onAddTodo={addTodo}/>
+    <div className={styles.mainWrapper} >
+      <h1 className={styles.header}>My Day</h1>
+      <p>{weekday}, {month} {date}</p>
+      <AddTodoForm  onAddTodo={addTodo}/> 
       {isLoading ? <p>Loading...</p> :  <TodoList todoList = {todoList} onRemoveTodo={removeTodo} />}
+      
      
     </div>
   );

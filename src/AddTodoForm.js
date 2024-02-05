@@ -2,6 +2,7 @@ import React from 'react';
 
 import {useState} from 'react';
 import InputWithLabel from './InputWithLabel';
+import styles from "./TodoListItem.module.css" 
 
 
 function AddTodoForm ({onAddTodo}) {
@@ -22,9 +23,10 @@ function AddTodoForm ({onAddTodo}) {
   } 
 
   return (
-    <form onSubmit={handleAddTodo}>
-      <InputWithLabel  id={"todoTitle"} title={"title"} value={todoTitle} handleChange = {handleTitleChange}> Title: </InputWithLabel>
-      <button type='submit' > add</button>
+    <form onSubmit={handleAddTodo} className={styles.addTask}>
+      <InputWithLabel className={styles.inputForm} id={"todoTitle"} title={"title"} value={todoTitle} comment={"Add task"} handleChange = {handleTitleChange}>  </InputWithLabel>
+      <button className="material-symbols-outlined" type='submit' > done</button>
+      {/* <span className="material-symbols-outlined"> add </span> */}
     </form>
   )
 }

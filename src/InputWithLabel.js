@@ -2,7 +2,7 @@ import React from 'react';
 // import {useRef} from 'react';
 
 
-function InputWithLabel({id, title, value, handleChange, children}) {
+function InputWithLabel({id, title, value, handleChange, children, comment}) {
 
     const inputRef = React.useRef(null);
 
@@ -13,7 +13,7 @@ function InputWithLabel({id, title, value, handleChange, children}) {
   return ( 
             <React.Fragment>
                 <label htmlFor={id} >{children}</label>
-                <input id={id} name={title} value={value} onChange={handleChange} ref ={inputRef} ></input>
+                <input id={id} name={title} value={value} onChange={handleChange} ref ={inputRef} placeholder={comment} ></input>
             </React.Fragment>
         )
   } 
